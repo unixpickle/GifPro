@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'GifPro' target in the 'GifPro' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif
