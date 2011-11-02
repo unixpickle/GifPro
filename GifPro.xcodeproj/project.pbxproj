@@ -13,6 +13,10 @@
 		FA0B00B31460A8F100E57109 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FA0B00B11460A8F100E57109 /* Credits.rtf */; };
 		FA0B00B61460A8F100E57109 /* ANAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00B51460A8F100E57109 /* ANAppDelegate.m */; };
 		FA0B00B91460A8F100E57109 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0B00B71460A8F100E57109 /* MainMenu.xib */; };
+		FA0B00C21460A91200E57109 /* ANGifColorTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00C11460A91200E57109 /* ANGifColorTable.m */; };
+		FA0B00C51460B16800E57109 /* ANGifBasicColorTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00C41460B16800E57109 /* ANGifBasicColorTable.m */; };
+		FA0B00C91460CC5400E57109 /* ANGifImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00C81460CC5400E57109 /* ANGifImageFrame.m */; };
+		FA0B00CF1460D01100E57109 /* ANGifGraphicControlExt.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00CE1460D01100E57109 /* ANGifGraphicControlExt.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +25,22 @@
 		FA0B00A51460A8F100E57109 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		FA0B00A61460A8F100E57109 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FA0B00A71460A8F100E57109 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		FA0B00AA1460A8F100E57109 /* GifPro-Info.plist */ = {isa = PBXFileReference; path = "GifPro-Info.plist"; sourceTree = "<group>"; };
+		FA0B00AA1460A8F100E57109 /* GifPro-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GifPro-Info.plist"; sourceTree = "<group>"; };
 		FA0B00AC1460A8F100E57109 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FA0B00AE1460A8F100E57109 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FA0B00B01460A8F100E57109 /* GifPro-Prefix.pch */ = {isa = PBXFileReference; path = "GifPro-Prefix.pch"; sourceTree = "<group>"; };
+		FA0B00B01460A8F100E57109 /* GifPro-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GifPro-Prefix.pch"; sourceTree = "<group>"; };
 		FA0B00B21460A8F100E57109 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		FA0B00B41460A8F100E57109 /* ANAppDelegate.h */ = {isa = PBXFileReference; path = ANAppDelegate.h; sourceTree = "<group>"; };
+		FA0B00B41460A8F100E57109 /* ANAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANAppDelegate.h; sourceTree = "<group>"; };
 		FA0B00B51460A8F100E57109 /* ANAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANAppDelegate.m; sourceTree = "<group>"; };
 		FA0B00B81460A8F100E57109 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FA0B00C01460A91200E57109 /* ANGifColorTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifColorTable.h; sourceTree = "<group>"; };
+		FA0B00C11460A91200E57109 /* ANGifColorTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANGifColorTable.m; sourceTree = "<group>"; };
+		FA0B00C31460B16800E57109 /* ANGifBasicColorTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifBasicColorTable.h; sourceTree = "<group>"; };
+		FA0B00C41460B16800E57109 /* ANGifBasicColorTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANGifBasicColorTable.m; sourceTree = "<group>"; };
+		FA0B00C71460CC5400E57109 /* ANGifImageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifImageFrame.h; sourceTree = "<group>"; };
+		FA0B00C81460CC5400E57109 /* ANGifImageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANGifImageFrame.m; sourceTree = "<group>"; };
+		FA0B00CD1460D01100E57109 /* ANGifGraphicControlExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifGraphicControlExt.h; sourceTree = "<group>"; };
+		FA0B00CE1460D01100E57109 /* ANGifGraphicControlExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANGifGraphicControlExt.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +58,7 @@
 		FA0B00931460A8F100E57109 = {
 			isa = PBXGroup;
 			children = (
+				FA0B00BF1460A90500E57109 /* ANGif2.0 */,
 				FA0B00A81460A8F100E57109 /* GifPro */,
 				FA0B00A11460A8F100E57109 /* Frameworks */,
 				FA0B009F1460A8F100E57109 /* Products */,
@@ -100,6 +113,29 @@
 				FA0B00B11460A8F100E57109 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA0B00BF1460A90500E57109 /* ANGif2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				FA0B00C61460CC2500E57109 /* ColorTable */,
+				FA0B00C71460CC5400E57109 /* ANGifImageFrame.h */,
+				FA0B00C81460CC5400E57109 /* ANGifImageFrame.m */,
+				FA0B00CD1460D01100E57109 /* ANGifGraphicControlExt.h */,
+				FA0B00CE1460D01100E57109 /* ANGifGraphicControlExt.m */,
+			);
+			name = ANGif2.0;
+			sourceTree = "<group>";
+		};
+		FA0B00C61460CC2500E57109 /* ColorTable */ = {
+			isa = PBXGroup;
+			children = (
+				FA0B00C01460A91200E57109 /* ANGifColorTable.h */,
+				FA0B00C11460A91200E57109 /* ANGifColorTable.m */,
+				FA0B00C31460B16800E57109 /* ANGifBasicColorTable.h */,
+				FA0B00C41460B16800E57109 /* ANGifBasicColorTable.m */,
+			);
+			name = ColorTable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +203,10 @@
 			files = (
 				FA0B00AF1460A8F100E57109 /* main.m in Sources */,
 				FA0B00B61460A8F100E57109 /* ANAppDelegate.m in Sources */,
+				FA0B00C21460A91200E57109 /* ANGifColorTable.m in Sources */,
+				FA0B00C51460B16800E57109 /* ANGifBasicColorTable.m in Sources */,
+				FA0B00C91460CC5400E57109 /* ANGifImageFrame.m in Sources */,
+				FA0B00CF1460D01100E57109 /* ANGifGraphicControlExt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
