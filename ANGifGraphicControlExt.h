@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ANGifGraphicControlExt : NSObject
+#define kGraphicControlLabel 0xF9
+
+@interface ANGifGraphicControlExt : NSObject {
+	BOOL userInputFlag;
+	BOOL transparentColorFlag;
+	UInt8 transparentColorIndex;
+	NSTimeInterval delayTime;
+}
+
+@property (readwrite) BOOL userInputFlag;
+@property (readwrite) BOOL transparentColorFlag;
+@property (readwrite) UInt8 transparentColorIndex;
+@property (readwrite) NSTimeInterval delayTime;
+
+- (NSData *)encodeBlock;
 
 @end

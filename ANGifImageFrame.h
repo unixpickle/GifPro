@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "ANGifColorTable.h"
+#import "ANColorTable.h"
 
 @protocol ANGifImageFramePixelSource
 
@@ -19,14 +19,14 @@
 
 @interface ANGifImageFrame : NSObject {
 	id<ANGifImageFramePixelSource> pixelSource;
-	ANGifColorTable * localColorTable;
+	ANColorTable * localColorTable;
 	UInt16 offsetX;
 	UInt16 offsetY;
 	NSTimeInterval delayTime;
 }
 
 @property (nonatomic, retain) id<ANGifImageFramePixelSource> pixelSource;
-@property (nonatomic, retain) ANGifColorTable * localColorTable;
+@property (nonatomic, retain) ANColorTable * localColorTable;
 @property (readwrite) UInt16 offsetX, offsetY;
 @property (readwrite) NSTimeInterval delayTime;
 
@@ -37,7 +37,7 @@
  * will be used for this image.
  * @param delay The delay in seconds before the next frame will be shown. This is accurate to the millisecond.
  */
-- (id)initWithPixelSource:(id<ANGifImageFramePixelSource>)aSource colorTable:(ANGifColorTable *)table delayTime:(NSTimeInterval)delay;
+- (id)initWithPixelSource:(id<ANGifImageFramePixelSource>)aSource colorTable:(ANColorTable *)table delayTime:(NSTimeInterval)delay;
 
 /**
  * Create an ANGifImageFrame with an image source and a delay.
@@ -54,6 +54,6 @@
  * only by calling the addColor: method. This may not be nil.
  * @return The encoded data of the image, or nil upon error.
  */
-- (NSData *)encodeImageUsingColorTable:(ANGifColorTable *)colorTable;
+- (NSData *)encodeImageUsingColorTable:(ANColorTable *)colorTable;
 
 @end

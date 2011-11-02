@@ -15,7 +15,7 @@
 @synthesize offsetX, offsetY;
 @synthesize delayTime;
 
-- (id)initWithPixelSource:(id<ANGifImageFramePixelSource>)aSource colorTable:(ANGifColorTable *)table delayTime:(NSTimeInterval)delay {
+- (id)initWithPixelSource:(id<ANGifImageFramePixelSource>)aSource colorTable:(ANColorTable *)table delayTime:(NSTimeInterval)delay {
 	if ((self = [super init])) {
 		self.pixelSource = aSource;
 		self.localColorTable = table;
@@ -30,10 +30,10 @@
 	return self;
 }
 
-- (NSData *)encodeImageUsingColorTable:(ANGifColorTable *)colorTable {
+- (NSData *)encodeImageUsingColorTable:(ANColorTable *)colorTable {
 	NSUInteger color[4];
 	ANGifColor gifColor;
-	NSMutableData * encodedData = [[NSMutableData alloc] init];
+	NSMutableData * encodedData = [NSMutableData data];
 	NSUInteger width = [pixelSource pixelsWide];
 	NSUInteger height = [pixelSource pixelsHigh];
 	for (NSUInteger y = 0; y < height; y++) {

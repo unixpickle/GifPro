@@ -13,10 +13,11 @@
 		FA0B00B31460A8F100E57109 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FA0B00B11460A8F100E57109 /* Credits.rtf */; };
 		FA0B00B61460A8F100E57109 /* ANAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00B51460A8F100E57109 /* ANAppDelegate.m */; };
 		FA0B00B91460A8F100E57109 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0B00B71460A8F100E57109 /* MainMenu.xib */; };
-		FA0B00C21460A91200E57109 /* ANGifColorTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00C11460A91200E57109 /* ANGifColorTable.m */; };
-		FA0B00C51460B16800E57109 /* ANGifBasicColorTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00C41460B16800E57109 /* ANGifBasicColorTable.m */; };
+		FA0B00C21460A91200E57109 /* ANColorTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00C11460A91200E57109 /* ANColorTable.m */; };
+		FA0B00C51460B16800E57109 /* ANAvgColorTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00C41460B16800E57109 /* ANAvgColorTable.m */; };
 		FA0B00C91460CC5400E57109 /* ANGifImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00C81460CC5400E57109 /* ANGifImageFrame.m */; };
 		FA0B00CF1460D01100E57109 /* ANGifGraphicControlExt.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00CE1460D01100E57109 /* ANGifGraphicControlExt.m */; };
+		FA0B00D21460D43900E57109 /* ANGifImageDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00D11460D43900E57109 /* ANGifImageDescriptor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,14 +34,16 @@
 		FA0B00B41460A8F100E57109 /* ANAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANAppDelegate.h; sourceTree = "<group>"; };
 		FA0B00B51460A8F100E57109 /* ANAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANAppDelegate.m; sourceTree = "<group>"; };
 		FA0B00B81460A8F100E57109 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		FA0B00C01460A91200E57109 /* ANGifColorTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifColorTable.h; sourceTree = "<group>"; };
-		FA0B00C11460A91200E57109 /* ANGifColorTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANGifColorTable.m; sourceTree = "<group>"; };
-		FA0B00C31460B16800E57109 /* ANGifBasicColorTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifBasicColorTable.h; sourceTree = "<group>"; };
-		FA0B00C41460B16800E57109 /* ANGifBasicColorTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANGifBasicColorTable.m; sourceTree = "<group>"; };
+		FA0B00C01460A91200E57109 /* ANColorTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANColorTable.h; sourceTree = "<group>"; };
+		FA0B00C11460A91200E57109 /* ANColorTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANColorTable.m; sourceTree = "<group>"; };
+		FA0B00C31460B16800E57109 /* ANAvgColorTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANAvgColorTable.h; sourceTree = "<group>"; };
+		FA0B00C41460B16800E57109 /* ANAvgColorTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANAvgColorTable.m; sourceTree = "<group>"; };
 		FA0B00C71460CC5400E57109 /* ANGifImageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifImageFrame.h; sourceTree = "<group>"; };
 		FA0B00C81460CC5400E57109 /* ANGifImageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANGifImageFrame.m; sourceTree = "<group>"; };
 		FA0B00CD1460D01100E57109 /* ANGifGraphicControlExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifGraphicControlExt.h; sourceTree = "<group>"; };
 		FA0B00CE1460D01100E57109 /* ANGifGraphicControlExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANGifGraphicControlExt.m; sourceTree = "<group>"; };
+		FA0B00D01460D43900E57109 /* ANGifImageDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifImageDescriptor.h; sourceTree = "<group>"; };
+		FA0B00D11460D43900E57109 /* ANGifImageDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANGifImageDescriptor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 				FA0B00C81460CC5400E57109 /* ANGifImageFrame.m */,
 				FA0B00CD1460D01100E57109 /* ANGifGraphicControlExt.h */,
 				FA0B00CE1460D01100E57109 /* ANGifGraphicControlExt.m */,
+				FA0B00D01460D43900E57109 /* ANGifImageDescriptor.h */,
+				FA0B00D11460D43900E57109 /* ANGifImageDescriptor.m */,
 			);
 			name = ANGif2.0;
 			sourceTree = "<group>";
@@ -130,10 +135,10 @@
 		FA0B00C61460CC2500E57109 /* ColorTable */ = {
 			isa = PBXGroup;
 			children = (
-				FA0B00C01460A91200E57109 /* ANGifColorTable.h */,
-				FA0B00C11460A91200E57109 /* ANGifColorTable.m */,
-				FA0B00C31460B16800E57109 /* ANGifBasicColorTable.h */,
-				FA0B00C41460B16800E57109 /* ANGifBasicColorTable.m */,
+				FA0B00C01460A91200E57109 /* ANColorTable.h */,
+				FA0B00C11460A91200E57109 /* ANColorTable.m */,
+				FA0B00C31460B16800E57109 /* ANAvgColorTable.h */,
+				FA0B00C41460B16800E57109 /* ANAvgColorTable.m */,
 			);
 			name = ColorTable;
 			sourceTree = "<group>";
@@ -203,10 +208,11 @@
 			files = (
 				FA0B00AF1460A8F100E57109 /* main.m in Sources */,
 				FA0B00B61460A8F100E57109 /* ANAppDelegate.m in Sources */,
-				FA0B00C21460A91200E57109 /* ANGifColorTable.m in Sources */,
-				FA0B00C51460B16800E57109 /* ANGifBasicColorTable.m in Sources */,
+				FA0B00C21460A91200E57109 /* ANColorTable.m in Sources */,
+				FA0B00C51460B16800E57109 /* ANAvgColorTable.m in Sources */,
 				FA0B00C91460CC5400E57109 /* ANGifImageFrame.m in Sources */,
 				FA0B00CF1460D01100E57109 /* ANGifGraphicControlExt.m in Sources */,
+				FA0B00D21460D43900E57109 /* ANGifImageDescriptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
