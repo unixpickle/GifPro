@@ -14,12 +14,15 @@ typedef struct {
 	UInt8 blue;
 } ANGifColor;
 
+BOOL ANGifColorIsEqual (ANGifColor color1, ANGifColor color2);
+NSUInteger ANGifColorVariance (ANGifColor color1, ANGifColor color2);
+ANGifColor ANGifColorAverage (ANGifColor color1, ANGifColor color2);
+ANGifColor ANGifColorMake (UInt8 red, UInt8 green, UInt8 blue);
+
 typedef struct {
 	ANGifColor color;
 	NSUInteger priority;
 } ANGifColorTableEntry;
-
-BOOL ANGifColorIsEqual (ANGifColor color1, ANGifColor color2);
 
 #define ANGifColorIndexOutOfBoundsException @"ANGifColorIndexOutOfBoundsException"
 #define ANGifColorTableFullException @"ANGifColorTableFullException"
@@ -41,8 +44,17 @@ BOOL ANGifColorIsEqual (ANGifColor color1, ANGifColor color2);
 - (void)setColor:(ANGifColor)color atIndex:(UInt8)index;
 - (UInt8)addColor:(ANGifColor)aColor;
 - (ANGifColor)colorAtIndex:(UInt8)index;
+- (UInt8)transparentIndex;
 
 - (void)sortByPriority;
 - (BOOL)singleSortStep;
+
+/**
+ * Returns a value x where 2^(x + 1) is the number (or more than the number)
+ * of entries in this color table.
+ */
+- (UInt8)colorTableSizeValue;
+- (NSData *)encodeRawColorTable;
+- (NSData *)encodeRawColorTableCount:(NSUInteger)numEntries;
 
 @end

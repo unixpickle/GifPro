@@ -36,16 +36,24 @@
 	NSMutableData * encodedData = [NSMutableData data];
 	NSUInteger width = [pixelSource pixelsWide];
 	NSUInteger height = [pixelSource pixelsHigh];
+	
 	for (NSUInteger y = 0; y < height; y++) {
 		for (NSUInteger x = 0; x < width; x++) {
+			UInt8 myByte;
 			[pixelSource getPixel:color atX:x y:y];
-			gifColor.red = color[0];
-			gifColor.green = color[1];
-			gifColor.blue = color[2];
-			UInt8 myByte = [colorTable addColor:gifColor];
-			[encodedData appendBytes:&myByte length:1];
+			if ([colorTable hasTransparentFirst] && color[3] < 0x20 && [pixelSource hasTransparency]) {
+				myByte = [colorTable transparentIndex];
+				[encodedData appendBytes:&myByte length:1];
+			} else {
+				gifColor.red = color[0];
+				gifColor.green = color[1];
+				gifColor.blue = color[2];
+				myByte = [colorTable addColor:gifColor];
+				[encodedData appendBytes:&myByte length:1];
+			}
 		}
 	}
+	
 	return [NSData dataWithData:encodedData]; // return immutable version
 }
 

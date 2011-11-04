@@ -8,14 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ANColorTable.h"
-
-@protocol ANGifImageFramePixelSource
-
-- (NSUInteger)pixelsWide;
-- (NSUInteger)pixelsHigh;
-- (void)getPixel:(NSUInteger *)pixel atX:(NSInteger)x y:(NSInteger)y;
-
-@end
+#import "ANGifImageFramePixelSource.h"
 
 @interface ANGifImageFrame : NSObject {
 	id<ANGifImageFramePixelSource> pixelSource;

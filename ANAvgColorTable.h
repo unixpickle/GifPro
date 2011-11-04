@@ -8,6 +8,8 @@
 
 #import "ANColorTable.h"
 
-@interface ANAvgColorTable : ANColorTable
+@interface ANAvgColorTable : ANColorTable {
+	
+}
 
 @end

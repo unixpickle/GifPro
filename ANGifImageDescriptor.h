@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ANGifImageFrame.h"
 
-#define kImageBlockLabel 0x2C
+#define kImageSeparator 0x2C
 
 @interface ANGifImageDescriptor : NSObject {
 	__weak ANGifImageFrame * imageFrame;

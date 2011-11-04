@@ -11,35 +11,35 @@
 @implementation ANAvgColorTable
 
 - (UInt8)addColor:(ANGifColor)aColor {
-	if (_entryCount < maxColors) {
-		return [super addColor:aColor];
-	}
-	
 	NSUInteger firstIndex = (self.hasTransparentFirst ? 1 : 0);
 	UInt8 bestToCut = firstIndex;
-	NSUInteger variance = 256 * 3;
+	NSUInteger variance = UINT_MAX;
 	
 	for (NSUInteger index = firstIndex + 1; index < _entryCount; index++) {
 		NSUInteger lvariance = 0;
 		ANGifColor color = [self colorAtIndex:index];
 		lvariance += abs((int)color.red - (int)aColor.red);
-		lvariance += abs(color.green - aColor.green);
-		lvariance += abs(color.blue - aColor.blue);
+		lvariance += abs((int)color.green - (int)aColor.green);
+		lvariance += abs((int)color.blue - (int)aColor.blue);
+		lvariance *= _entries[index].priority;
 		if (lvariance < variance) {
 			bestToCut = index;
 			variance = lvariance;
+			if (lvariance == 0) return bestToCut;
 		}
 	}
-
-	// cut the best cut
+	
+	if (_entryCount < maxColors && variance > 10) {
+		return [super addColor:aColor];
+	}
+	
+	// do a cut
 	ANGifColor cutColor = [self colorAtIndex:bestToCut];
-	cutColor.red = (UInt8)round(((double)cutColor.red + (double)aColor.red) / 2.0);
-	cutColor.green = (UInt8)round(((double)cutColor.green + (double)aColor.green) / 2.0);
-	cutColor.blue = (UInt8)round(((double)cutColor.blue + (double)aColor.blue) / 2.0);
+	cutColor = ANGifColorAverage(cutColor, aColor);
 	_entries[bestToCut].color = cutColor;
+	
 	_entries[bestToCut].priority += 1;
-
-	return 0;
+	return bestToCut;
 }
 
 @end

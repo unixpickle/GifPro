@@ -61,7 +61,7 @@
 	if (_entryCount == _totalAlloced) {
 		_totalAlloced += 3;
 		if (_totalAlloced > maxColors) _totalAlloced = maxColors;
-		_entries = (ANGifColorTableEntry *)malloc(sizeof(ANGifColorTableEntry) * _totalAlloced);
+		_entries = (ANGifColorTableEntry *)realloc(_entries, sizeof(ANGifColorTableEntry) * _totalAlloced);
 	}
 	_entries[_entryCount].color = aColor;
 	_entries[_entryCount].priority = 1;
@@ -75,6 +75,10 @@
 									 userInfo:nil];
 	}
 	return _entries[index].color;
+}
+
+- (UInt8)transparentIndex {
+	return 0;
 }
 
 - (void)dealloc {
@@ -103,6 +107,47 @@
 	return NO;
 }
 
+#pragma mark Encoding
+
+- (UInt8)colorTableSizeValue {
+	for (NSUInteger x = 0; x < 8; x++) {
+		// test the value
+		NSUInteger countValue = 1 << (x + 1);
+		if (countValue >= _entryCount) {
+			return x;
+		}
+	}
+	return 7;
+}
+
+- (NSData *)encodeRawColorTable {	
+	UInt8 tableSize = [self colorTableSizeValue];
+	NSUInteger numEntries = 1 << ((NSUInteger)tableSize + 1);
+	return [self encodeRawColorTableCount:numEntries];
+}
+
+- (NSData *)encodeRawColorTableCount:(NSUInteger)numEntries {
+	NSMutableData * encoded = [NSMutableData data];
+	
+	UInt8 byte;
+	for (NSUInteger i = 0; i < numEntries; i++) {
+		if (i >= _entryCount) {
+			// add empty entry
+			byte = 0;
+			[encoded appendBytes:&byte length:1];
+			[encoded appendBytes:&byte length:1];
+			[encoded appendBytes:&byte length:1];
+		} else {
+			ANGifColor color = [self colorAtIndex:(UInt8)i];
+			[encoded appendBytes:&color.red length:1];
+			[encoded appendBytes:&color.green length:1];
+			[encoded appendBytes:&color.blue length:1];
+		}
+	}
+	
+	return [NSData dataWithData:encoded];
+}
+
 @end
 
 BOOL ANGifColorIsEqual (ANGifColor color1, ANGifColor color2) {
@@ -110,4 +155,28 @@ BOOL ANGifColorIsEqual (ANGifColor color1, ANGifColor color2) {
 		return YES;
 	}
 	return NO;
+}
+
+NSUInteger ANGifColorVariance (ANGifColor color1, ANGifColor color2) {
+	NSUInteger v = 0;
+	v += abs((int)color1.red - (int)color2.red);
+	v += abs((int)color1.green - (int)color2.green);
+	v += abs((int)color1.blue - (int)color2.blue);
+	return v;
+}
+
+ANGifColor ANGifColorAverage (ANGifColor color1, ANGifColor color2) {
+	ANGifColor median;
+	median.red = (UInt8)round(((double)color1.red + (double)color2.red) / 2.0);
+	median.green = (UInt8)round(((double)color1.green + (double)color2.green) / 2.0);
+	median.blue = (UInt8)round(((double)color1.blue + (double)color2.blue) / 2.0);
+	return median;
+}
+
+ANGifColor ANGifColorMake (UInt8 red, UInt8 green, UInt8 blue) {
+	ANGifColor color;
+	color.red = red;
+	color.green = green;
+	color.blue = blue;
+	return color;
 }

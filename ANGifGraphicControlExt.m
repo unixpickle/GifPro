@@ -26,8 +26,8 @@
 	aByte = 4;
 	[encoded appendBytes:&aByte length:1]; // block length (fixed)
 	
-	// <Packed Fields> w/ disposal method #2
-	aByte = (2 << 2) | (userInputFlag << 1) | transparentColorFlag;
+	// <Packed Fields> w/ disposal method #3
+	aByte = (3 << 2) | (userInputFlag << 1) | transparentColorFlag;
 	[encoded appendBytes:&aByte length:1];
 	
 	doubleByte = (UInt16)round(delayTime * 100);
