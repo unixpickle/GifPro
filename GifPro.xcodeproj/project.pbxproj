@@ -9,10 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA0A5C0D1461EF69006BEE0C /* ANGifDataSubblock.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A5C0C1461EF69006BEE0C /* ANGifDataSubblock.m */; };
 		FA0A5C121461F7C6006BEE0C /* ANNSImageGifPixelSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A5C111461F7C6006BEE0C /* ANNSImageGifPixelSource.m */; };
-		FA0A5C161461FB11006BEE0C /* happy.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0A5C151461FB11006BEE0C /* happy.png */; };
-		FA0A5C181462039D006BEE0C /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0A5C171462039D006BEE0C /* test1.png */; };
 		FA0A5C1B14620A0C006BEE0C /* ANMutableColorArray.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A5C1A14620A0C006BEE0C /* ANMutableColorArray.m */; };
-		FA0A5C1D146223DD006BEE0C /* fancy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA0A5C1C146223DD006BEE0C /* fancy.jpg */; };
 		FA0B00A31460A8F100E57109 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0B00A21460A8F100E57109 /* Cocoa.framework */; };
 		FA0B00AD1460A8F100E57109 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA0B00AB1460A8F100E57109 /* InfoPlist.strings */; };
 		FA0B00AF1460A8F100E57109 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0B00AE1460A8F100E57109 /* main.m */; };
@@ -39,11 +36,8 @@
 		FA0A5C0C1461EF69006BEE0C /* ANGifDataSubblock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANGifDataSubblock.m; sourceTree = "<group>"; };
 		FA0A5C101461F7C5006BEE0C /* ANNSImageGifPixelSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANNSImageGifPixelSource.h; path = ../ANNSImageGifPixelSource.h; sourceTree = "<group>"; };
 		FA0A5C111461F7C6006BEE0C /* ANNSImageGifPixelSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANNSImageGifPixelSource.m; path = ../ANNSImageGifPixelSource.m; sourceTree = "<group>"; };
-		FA0A5C151461FB11006BEE0C /* happy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = happy.png; sourceTree = "<group>"; };
-		FA0A5C171462039D006BEE0C /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
 		FA0A5C1914620A0C006BEE0C /* ANMutableColorArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANMutableColorArray.h; sourceTree = "<group>"; };
 		FA0A5C1A14620A0C006BEE0C /* ANMutableColorArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANMutableColorArray.m; sourceTree = "<group>"; };
-		FA0A5C1C146223DD006BEE0C /* fancy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fancy.jpg; sourceTree = "<group>"; };
 		FA0B009E1460A8F100E57109 /* GifPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0B00A21460A8F100E57109 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FA0B00A51460A8F100E57109 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -169,9 +163,6 @@
 		FA0B00A91460A8F100E57109 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FA0A5C1C146223DD006BEE0C /* fancy.jpg */,
-				FA0A5C171462039D006BEE0C /* test1.png */,
-				FA0A5C151461FB11006BEE0C /* happy.png */,
 				FA0B00AA1460A8F100E57109 /* GifPro-Info.plist */,
 				FA0B00AB1460A8F100E57109 /* InfoPlist.strings */,
 				FA0B00AE1460A8F100E57109 /* main.m */,
@@ -294,9 +285,6 @@
 				FA0B00AD1460A8F100E57109 /* InfoPlist.strings in Resources */,
 				FA0B00B31460A8F100E57109 /* Credits.rtf in Resources */,
 				FA0B00B91460A8F100E57109 /* MainMenu.xib in Resources */,
-				FA0A5C161461FB11006BEE0C /* happy.png in Resources */,
-				FA0A5C181462039D006BEE0C /* test1.png in Resources */,
-				FA0A5C1D146223DD006BEE0C /* fancy.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
