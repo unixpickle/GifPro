@@ -20,4 +20,13 @@
 	return entry;
 }
 
+#if !__has_feature(objc_arc)
+
+- (void)dealloc {
+	self.fileName = nil;
+	[super dealloc];
+}
+
+#endif
+
 @end

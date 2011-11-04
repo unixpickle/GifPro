@@ -67,6 +67,9 @@
 															  outputFile:path
 																   delay:delayTime];
 	[NSApp beginSheet:export modalForWindow:self.window modalDelegate:nil didEndSelector:NULL contextInfo:NULL];
+#if !__has_feature(objc_arc)
+	[export release];
+#endif
 }
 
 #pragma mark - Table View -
@@ -85,7 +88,11 @@
 		return;
 	}
 	NSString * filename = [[imageList objectAtIndex:[imageTable selectedRow]] fileName];
+#if __has_feature(objc_arc)
 	[currentFrame setImage:[[NSImage alloc] initWithContentsOfFile:filename]];
+#else
+	[currentFrame setImage:[[[NSImage alloc] initWithContentsOfFile:filename] autorelease]];
+#endif
 }
 
 #pragma mark Drag and Drop
@@ -146,5 +153,16 @@
 	[self tableViewSelectionDidChange:nil];
 	return YES;
 }
+
+#pragma mark Memory Management
+
+#if !__has_feature(objc_arc)
+
+- (void)dealloc {
+	[sourceIndices release];
+	[imageList release];
+}
+
+#endif
 
 @end
