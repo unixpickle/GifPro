@@ -5,6 +5,7 @@
 //  Created by Alex Nichol on 11/2/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
+//  Converted to Non-ARC 11/4/11
 
 #import "ANGifDataSubblock.h"
 
@@ -23,6 +24,9 @@
 		NSData * theData = [NSData dataWithBytes:&bytes[index] length:blockLen];
 		ANGifDataSubblock * subblock = [[ANGifDataSubblock alloc] initWithBlockData:theData];
 		[array addObject:subblock];
+#if !__has_feature(objc_arc)
+		[subblock release];
+#endif
 	}
 	
 	return [NSArray arrayWithArray:array];
@@ -30,7 +34,11 @@
 
 - (id)initWithBlockData:(NSData *)theData {
 	if ((self = [super init])) {
+#if __has_feature(objc_arc)
 		subblockData = theData;
+#else
+		subblockData = [theData retain];
+#endif
 	}
 	return self;
 }
@@ -49,5 +57,14 @@
 	[fileHandle writeData:[NSData dataWithBytes:&length length:1]];
 	[fileHandle writeData:subblockData];
 }
+
+#if !__has_feature(objc_arc)
+
+- (void)dealloc {
+	[subblockData release];
+	[super dealloc];
+}
+
+#endif
 
 @end
