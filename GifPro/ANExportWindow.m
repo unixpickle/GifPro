@@ -53,23 +53,35 @@
 		CGSize frameSize = NSSizeToCGSize(firstImage.size);
 		ANGifEncoder * encoder = [[ANGifEncoder alloc] initWithOutputFile:outputFile
 																	 size:frameSize globalColorTable:nil];
+#if __has_feature((objc_arc))
 		[encoder addApplicationExtension:[[ANGifNetscapeAppExtension alloc] initWithRepeatCount:0xffff]]; // loop
+#else
+		[encoder addApplicationExtension:[[[ANGifNetscapeAppExtension alloc] initWithRepeatCount:0xffff] autorelease]]; // loop
+#endif
+		
 		[encoder addImageFrame:[self imageFrameFromImage:firstImage]];
+		
+#if !__has_feature((objc_arc))
+		[firstImage release];
+#endif
+		
 		for (int i = 1; i < [imageFiles count]; i++) {
-			if ([[NSThread currentThread] isCancelled]) {
-				[encoder closeFile];
-				[[NSFileManager defaultManager] removeItemAtPath:outputFile error:nil];
-				return;
-			}
 			NSImage * anImage = [[NSImage alloc] initWithContentsOfFile:[imageFiles objectAtIndex:i]];
 			if ([[NSThread currentThread] isCancelled]) {
 				[encoder closeFile];
+#if !__has_feature((objc_arc))
+				[anImage release];
+				[encoder release];
+#endif
 				[[NSFileManager defaultManager] removeItemAtPath:outputFile error:nil];
 				return;
 			}
 			[encoder addImageFrame:[self imageFrameFromImage:anImage scaled:frameSize]];
 		}
 		[encoder closeFile];
+#if !__has_feature((objc_arc))
+		[encoder release];
+#endif
 		if ([[NSThread currentThread] isCancelled]) {
 			[[NSFileManager defaultManager] removeItemAtPath:outputFile error:nil];
 			return;
@@ -79,10 +91,18 @@
 }
 
 - (ANGifImageFrame *)imageFrameFromImage:(NSImage *)image {
+#if __has_feature((objc_arc))
 	ANNSImageGifPixelSource * pixSource = [[ANNSImageGifPixelSource alloc] initWithImage:image];
 	return [[ANGifImageFrame alloc] initWithPixelSource:pixSource
 											 colorTable:[[ANCutColorTable alloc] initWithTransparentFirst:YES pixelSource:pixSource]
 											  delayTime:imageDelay];
+#else
+	ANNSImageGifPixelSource * pixSource = [[[ANNSImageGifPixelSource alloc] initWithImage:image] autorelease];
+	ANColorTable * colorTable = [[[ANCutColorTable alloc] initWithTransparentFirst:YES pixelSource:pixSource] autorelease];
+	return [[[ANGifImageFrame alloc] initWithPixelSource:pixSource
+											 colorTable:colorTable
+											  delayTime:imageDelay] autoreleaes];
+#endif
 }
 
 - (ANGifImageFrame *)imageFrameFromImage:(NSImage *)image scaled:(CGSize)scaleSize {
