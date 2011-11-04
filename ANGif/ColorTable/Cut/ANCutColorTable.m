@@ -59,7 +59,7 @@
 	UInt8 firstIndex = (self.hasTransparentFirst ? 1 : 0);
 	NSUInteger variance = INT_MAX;
 	UInt8 selectedColor = firstIndex;
-	for (NSUInteger i = firstIndex + 1; i < _entryCount; i++) {
+	for (NSUInteger i = firstIndex; i < _entryCount; i++) {
 		ANGifColor color = [self colorAtIndex:i];
 		NSUInteger lvariance = ANGifColorVariance(color, aColor);
 		if (lvariance < variance) {

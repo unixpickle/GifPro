@@ -29,6 +29,7 @@
 		FA0C09D7146388170074409F /* ANGifImageDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0C09C6146388170074409F /* ANGifImageDescriptor.m */; };
 		FA0C09D8146388170074409F /* ANGifImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0C09C8146388170074409F /* ANGifImageFrame.m */; };
 		FA0C09D9146388170074409F /* LZWSpoof.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0C09CC146388170074409F /* LZWSpoof.m */; };
+		FA9B338E1464812700D58B3A /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B338D1464812700D58B3A /* NSImage+Resize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,8 @@
 		FA0C09C9146388170074409F /* ANGifImageFramePixelSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifImageFramePixelSource.h; sourceTree = "<group>"; };
 		FA0C09CB146388170074409F /* LZWSpoof.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZWSpoof.h; sourceTree = "<group>"; };
 		FA0C09CC146388170074409F /* LZWSpoof.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZWSpoof.m; sourceTree = "<group>"; };
+		FA9B338C1464812700D58B3A /* NSImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
+		FA9B338D1464812700D58B3A /* NSImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Resize.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,12 +135,11 @@
 		FA0B00A81460A8F100E57109 /* GifPro */ = {
 			isa = PBXGroup;
 			children = (
+				FA9B338A1464810C00D58B3A /* NSImage Stuff */,
 				FA0B00B41460A8F100E57109 /* ANAppDelegate.h */,
 				FA0B00B51460A8F100E57109 /* ANAppDelegate.m */,
 				FA0C099914636ECB0074409F /* ANImageListEntry.h */,
 				FA0C099A14636ECB0074409F /* ANImageListEntry.m */,
-				FA0A5C101461F7C5006BEE0C /* ANNSImageGifPixelSource.h */,
-				FA0A5C111461F7C6006BEE0C /* ANNSImageGifPixelSource.m */,
 				FA0C099C146370F40074409F /* ANExportWindow.h */,
 				FA0C099D146370F40074409F /* ANExportWindow.m */,
 				FA0B00B71460A8F100E57109 /* MainMenu.xib */,
@@ -232,6 +234,17 @@
 			path = LZW;
 			sourceTree = "<group>";
 		};
+		FA9B338A1464810C00D58B3A /* NSImage Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				FA0A5C101461F7C5006BEE0C /* ANNSImageGifPixelSource.h */,
+				FA0A5C111461F7C6006BEE0C /* ANNSImageGifPixelSource.m */,
+				FA9B338C1464812700D58B3A /* NSImage+Resize.h */,
+				FA9B338D1464812700D58B3A /* NSImage+Resize.m */,
+			);
+			name = "NSImage Stuff";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -313,6 +326,7 @@
 				FA0C09D7146388170074409F /* ANGifImageDescriptor.m in Sources */,
 				FA0C09D8146388170074409F /* ANGifImageFrame.m in Sources */,
 				FA0C09D9146388170074409F /* LZWSpoof.m in Sources */,
+				FA9B338E1464812700D58B3A /* NSImage+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

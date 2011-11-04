@@ -15,7 +15,7 @@
 	UInt8 bestToCut = firstIndex;
 	NSUInteger variance = UINT_MAX;
 	
-	for (NSUInteger index = firstIndex + 1; index < _entryCount; index++) {
+	for (NSUInteger index = firstIndex; index < _entryCount; index++) {
 		NSUInteger lvariance = 0;
 		ANGifColor color = [self colorAtIndex:index];
 		lvariance += abs((int)color.red - (int)aColor.red);

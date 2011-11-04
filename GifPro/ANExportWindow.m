@@ -50,10 +50,11 @@
 - (void)exportInBackground {
 	@autoreleasepool {
 		NSImage * firstImage = [[NSImage alloc] initWithContentsOfFile:[imageFiles objectAtIndex:0]];
+		CGSize frameSize = NSSizeToCGSize(firstImage.size);
 		ANGifEncoder * encoder = [[ANGifEncoder alloc] initWithOutputFile:outputFile
-																	 size:NSSizeToCGSize(firstImage.size) globalColorTable:nil];
+																	 size:frameSize globalColorTable:nil];
 		[encoder addApplicationExtension:[[ANGifNetscapeAppExtension alloc] initWithRepeatCount:0xffff]]; // loop
-		[encoder addImageFrame:[self imageFrameFromImage:firstImage withDelay:imageDelay]];
+		[encoder addImageFrame:[self imageFrameFromImage:firstImage]];
 		for (int i = 1; i < [imageFiles count]; i++) {
 			if ([[NSThread currentThread] isCancelled]) {
 				[encoder closeFile];
@@ -66,7 +67,7 @@
 				[[NSFileManager defaultManager] removeItemAtPath:outputFile error:nil];
 				return;
 			}
-			[encoder addImageFrame:[self imageFrameFromImage:anImage withDelay:imageDelay]];
+			[encoder addImageFrame:[self imageFrameFromImage:anImage scaled:frameSize]];
 		}
 		[encoder closeFile];
 		if ([[NSThread currentThread] isCancelled]) {
@@ -77,11 +78,43 @@
 	}
 }
 
-- (ANGifImageFrame *)imageFrameFromImage:(NSImage *)image withDelay:(NSTimeInterval)delayTime {
+- (ANGifImageFrame *)imageFrameFromImage:(NSImage *)image {
 	ANNSImageGifPixelSource * pixSource = [[ANNSImageGifPixelSource alloc] initWithImage:image];
 	return [[ANGifImageFrame alloc] initWithPixelSource:pixSource
 											 colorTable:[[ANCutColorTable alloc] initWithTransparentFirst:YES pixelSource:pixSource]
-											  delayTime:delayTime];
+											  delayTime:imageDelay];
+}
+
+- (ANGifImageFrame *)imageFrameFromImage:(NSImage *)image scaled:(CGSize)scaleSize {
+	if (CGSizeEqualToSize(NSSizeToCGSize([image size]), scaleSize)) {
+		return [self imageFrameFromImage:image];
+	}
+	
+	CGSize imageSize = NSSizeToCGSize(image.size);
+	NSImage * scaledImage = image;
+	NSUInteger offsetX = 0, offsetY = 0;
+	
+	if (imageSize.width > scaleSize.width || imageSize.height > scaleSize.height) {
+		// scale the image and image size
+		CGFloat factorX = imageSize.width / scaleSize.width;
+		CGFloat factorY = imageSize.height / scaleSize.height;
+		if (factorY > factorX) {
+			imageSize.width /= factorY;
+			imageSize.height /= factorY;
+		} else {
+			imageSize.width /= factorX;
+			imageSize.height /= factorX;
+		}
+		scaledImage = [image imageByResizing:NSSizeFromCGSize(imageSize)];
+	}
+	
+	offsetX = (NSUInteger)round(scaleSize.width / 2.0 - imageSize.width / 2.0);
+	offsetY = (NSUInteger)round(scaleSize.height / 2.0 - imageSize.height / 2.0);
+	
+	ANGifImageFrame * frame = [self imageFrameFromImage:scaledImage];
+	frame.offsetX = offsetX;
+	frame.offsetY = offsetY;
+	return frame;
 }
 
 @end

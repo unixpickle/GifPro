@@ -11,6 +11,7 @@
 #import "ANCutColorTable.h"
 #import "ANNSImageGifPixelSource.h"
 #import "ANGifNetscapeAppExtension.h"
+#import "NSImage+Resize.h"
 
 @interface ANExportWindow : NSWindow {
 	NSProgressIndicator * loadingBar;
@@ -27,6 +28,7 @@
 - (void)cancelExport:(id)sender;
 
 - (void)exportInBackground;
-- (ANGifImageFrame *)imageFrameFromImage:(NSImage *)image withDelay:(NSTimeInterval)delayTime;
+- (ANGifImageFrame *)imageFrameFromImage:(NSImage *)image;
+- (ANGifImageFrame *)imageFrameFromImage:(NSImage *)image scaled:(CGSize)scaleSize;
 
 @end
