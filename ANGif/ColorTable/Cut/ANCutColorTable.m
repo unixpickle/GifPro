@@ -5,6 +5,7 @@
 //  Created by Alex Nichol on 11/3/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
+//  Converted to Non-ARC 11/4/11
 
 #import "ANCutColorTable.h"
 
@@ -40,11 +41,18 @@
 		// split colorArray up if needed, create new color array
 		NSUInteger maxGenColors = (hasAlpha ? 254 : 255);
 		if ([colorArray count] > maxGenColors) {
+#if !__has_feature(objc_arc)
+			[colorArray autorelease];
+#endif
 			colorArray = [colorArray colorArrayByAveragingSplit:maxColors];
 		}
 		for (NSUInteger i = 0; i < [colorArray count]; i++) {
 			[super addColor:[colorArray colorAtIndex:i]];
 		}
+		
+#if !__has_feature(objc_arc)
+		[colorArray release];
+#endif
 		
 		finishedInit = YES;
 	}

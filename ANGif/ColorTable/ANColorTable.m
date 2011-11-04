@@ -5,6 +5,7 @@
 //  Created by Alex Nichol on 11/1/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
+//  Converted to Non-ARC 11/4/11
 
 #import "ANColorTable.h"
 
@@ -83,6 +84,9 @@
 
 - (void)dealloc {
 	free(_entries);
+#if !__has_feature(objc_arc)
+	[super dealloc];
+#endif
 }
 
 #pragma mark - Sorting -

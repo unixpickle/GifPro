@@ -5,6 +5,7 @@
 //  Created by Alex Nichol on 11/3/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
+//  Converted to Non-ARC 11/4/11
 
 #import "ANExportWindow.h"
 
@@ -40,6 +41,9 @@
 
 - (void)cancelExport:(id)sender {
 	[backgroundThread cancel];
+#if !__has_feature(objc_arc)
+	[backgroundThread release];
+#endif
 	backgroundThread = nil;
 	[NSApp endSheet:self];
 	[self orderOut:self];
@@ -53,7 +57,7 @@
 		CGSize frameSize = NSSizeToCGSize(firstImage.size);
 		ANGifEncoder * encoder = [[ANGifEncoder alloc] initWithOutputFile:outputFile
 																	 size:frameSize globalColorTable:nil];
-#if __has_feature((objc_arc))
+#if __has_feature(objc_arc)
 		[encoder addApplicationExtension:[[ANGifNetscapeAppExtension alloc] initWithRepeatCount:0xffff]]; // loop
 #else
 		[encoder addApplicationExtension:[[[ANGifNetscapeAppExtension alloc] initWithRepeatCount:0xffff] autorelease]]; // loop
@@ -61,7 +65,7 @@
 		
 		[encoder addImageFrame:[self imageFrameFromImage:firstImage]];
 		
-#if !__has_feature((objc_arc))
+#if __has_feature(objc_arc) != 1
 		[firstImage release];
 #endif
 		
@@ -69,7 +73,7 @@
 			NSImage * anImage = [[NSImage alloc] initWithContentsOfFile:[imageFiles objectAtIndex:i]];
 			if ([[NSThread currentThread] isCancelled]) {
 				[encoder closeFile];
-#if !__has_feature((objc_arc))
+#if __has_feature(objc_arc) != 1
 				[anImage release];
 				[encoder release];
 #endif
@@ -79,7 +83,7 @@
 			[encoder addImageFrame:[self imageFrameFromImage:anImage scaled:frameSize]];
 		}
 		[encoder closeFile];
-#if !__has_feature((objc_arc))
+#if __has_feature(objc_arc) != 1
 		[encoder release];
 #endif
 		if ([[NSThread currentThread] isCancelled]) {
@@ -91,7 +95,7 @@
 }
 
 - (ANGifImageFrame *)imageFrameFromImage:(NSImage *)image {
-#if __has_feature((objc_arc))
+#if __has_feature(objc_arc)
 	ANNSImageGifPixelSource * pixSource = [[ANNSImageGifPixelSource alloc] initWithImage:image];
 	return [[ANGifImageFrame alloc] initWithPixelSource:pixSource
 											 colorTable:[[ANCutColorTable alloc] initWithTransparentFirst:YES pixelSource:pixSource]
@@ -101,7 +105,7 @@
 	ANColorTable * colorTable = [[[ANCutColorTable alloc] initWithTransparentFirst:YES pixelSource:pixSource] autorelease];
 	return [[[ANGifImageFrame alloc] initWithPixelSource:pixSource
 											 colorTable:colorTable
-											  delayTime:imageDelay] autoreleaes];
+											  delayTime:imageDelay] autorelease];
 #endif
 }
 
@@ -136,5 +140,21 @@
 	frame.offsetY = offsetY;
 	return frame;
 }
+
+#if !__has_feature(objc_arc)
+
+- (void)dealloc {
+	[loadingBar release];
+	[cancelButton release];
+	[activityLabel release];
+	[backgroundThread release];
+	
+	[imageFiles release];
+	[outputFiles release];
+	
+	[super dealloc];
+}
+
+#endif
 
 @end

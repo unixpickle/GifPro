@@ -51,7 +51,7 @@
 		FA0C099914636ECB0074409F /* ANImageListEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANImageListEntry.h; sourceTree = "<group>"; };
 		FA0C099A14636ECB0074409F /* ANImageListEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANImageListEntry.m; sourceTree = "<group>"; };
 		FA0C099C146370F40074409F /* ANExportWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANExportWindow.h; sourceTree = "<group>"; };
-		FA0C099D146370F40074409F /* ANExportWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANExportWindow.m; sourceTree = "<group>"; };
+		FA0C099D146370F40074409F /* ANExportWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ANExportWindow.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FA0C09AD146388170074409F /* ANGifEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifEncoder.h; sourceTree = "<group>"; };
 		FA0C09AE146388170074409F /* ANGifEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANGifEncoder.m; sourceTree = "<group>"; };
 		FA0C09AF146388170074409F /* ANGifGraphicControlExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifGraphicControlExt.h; sourceTree = "<group>"; };
@@ -191,10 +191,10 @@
 		FA0C09B8146388170074409F /* ColorTable */ = {
 			isa = PBXGroup;
 			children = (
-				FA0C09B9146388170074409F /* ANAvgColorTable.h */,
-				FA0C09BA146388170074409F /* ANAvgColorTable.m */,
 				FA0C09BB146388170074409F /* ANColorTable.h */,
 				FA0C09BC146388170074409F /* ANColorTable.m */,
+				FA0C09B9146388170074409F /* ANAvgColorTable.h */,
+				FA0C09BA146388170074409F /* ANAvgColorTable.m */,
 				FA0C09BD146388170074409F /* Cut */,
 			);
 			path = ColorTable;

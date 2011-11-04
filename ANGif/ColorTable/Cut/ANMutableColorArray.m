@@ -5,6 +5,7 @@
 //  Created by Alex Nichol on 11/2/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
+//  Converted to Non-ARC 11/4/11
 
 #import "ANMutableColorArray.h"
 #define kColorBufferSize 256
@@ -33,9 +34,6 @@ int CompareColorQSort (const void * ent1, const void * ent2);
 	if (_entryCount + 1 == _totalAlloced) {
 		_totalAlloced += kColorBufferSize;
 		_colors = (ANGifColor *)realloc(_colors, sizeof(ANGifColor) * _totalAlloced);
-		if (!_colors) {
-			NSLog(@"FUUU FATAL!!!!!!!!");
-		}
 	}
 	_colors[_entryCount++] = color;
 }
@@ -51,9 +49,6 @@ int CompareColorQSort (const void * ent1, const void * ent2);
 	if (_totalAlloced - kColorBufferSize >= _entryCount && _totalAlloced > kColorBufferSize) {
 		_totalAlloced -= kColorBufferSize;
 		_colors = (ANGifColor *)realloc(_colors, sizeof(ANGifColor) * _totalAlloced);
-		if (!_colors) {
-			NSLog(@"FUUU FATAL!!!!!!!!");
-		}
 	}
 }
 
@@ -108,8 +103,11 @@ int CompareColorQSort (const void * ent1, const void * ent2);
 		
 		startIndex += size;
 	}
-	
+#if __has_feature(objc_arc)
 	return newArray;
+#else
+	return [newArray autorelease];
+#endif
 }
 
 - (void)removeDuplicates {
@@ -154,8 +152,13 @@ int CompareColorQSort (const void * ent1, const void * ent2);
 	return ANGifColorAverage(selectedColor, firstColor);
 }
 
+#pragma mark Memory Management
+
 - (void)dealloc {
 	free(_colors);
+#if !__has_feature(objc_arc)
+	[super dealloc];
+#endif
 }
 
 @end
