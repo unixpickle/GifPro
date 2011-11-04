@@ -5,6 +5,7 @@
 //  Created by Alex Nichol on 11/2/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
+//  Converted to Non-ARC 11/4/11
 
 #import "ANNSImageGifPixelSource.h"
 
@@ -32,5 +33,12 @@
 - (BOOL)hasTransparency {
 	return [bitmapRep hasAlpha];
 }
+
+#if !__has_feature(objc_arc)
+- (void)dealloc {
+	[bitmapRep release];
+	[super dealloc];
+}
+#endif
 
 @end
