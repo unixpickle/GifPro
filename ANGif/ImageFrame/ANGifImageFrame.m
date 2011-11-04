@@ -51,9 +51,6 @@
 				gifColor.blue = color[2];
 				myByte = [colorTable addColor:gifColor];
 				[encodedData appendBytes:&myByte length:1];
-				if (ANGifColorVariance(gifColor, [colorTable colorAtIndex:myByte]) > 30) {
-					NSLog(@"Big variance");
-				}
 			}
 		}
 	}

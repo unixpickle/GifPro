@@ -58,6 +58,7 @@
 
 - (void)exportInBackground {
 	@autoreleasepool {
+		NSDate * endMin = [NSDate dateWithTimeIntervalSinceNow:1];
 		NSImage * firstImage = [[NSImage alloc] initWithContentsOfFile:[imageFiles objectAtIndex:0]];
 		CGSize frameSize = NSSizeToCGSize(firstImage.size);
 		ANGifEncoder * encoder = [[ANGifEncoder alloc] initWithOutputFile:outputFile
@@ -86,6 +87,9 @@
 				return;
 			}
 			[encoder addImageFrame:[self imageFrameFromImage:anImage scaled:frameSize]];
+#if __has_feature(objc_arc) != 1
+			[anImage release];
+#endif
 		}
 		[encoder closeFile];
 #if __has_feature(objc_arc) != 1
@@ -95,6 +99,7 @@
 			[[NSFileManager defaultManager] removeItemAtPath:outputFile error:nil];
 			return;
 		}
+		[NSThread sleepUntilDate:endMin];
 		[self performSelectorInBackground:@selector(cancelExport:) withObject:nil];
 	}
 }
