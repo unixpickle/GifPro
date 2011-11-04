@@ -150,7 +150,7 @@
 	[backgroundThread release];
 	
 	[imageFiles release];
-	[outputFiles release];
+	[outputFile release];
 	
 	[super dealloc];
 }
