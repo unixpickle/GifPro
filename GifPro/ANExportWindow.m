@@ -13,8 +13,13 @@
 
 - (id)initWithImageFiles:(NSArray *)theFiles outputFile:(NSString *)aFile delay:(NSTimeInterval)dTime {
 	if ((self = [super initWithContentRect:NSMakeRect(0, 0, 500, 120) styleMask:NSTitledWindowMask backing:NSBackingStoreBuffered defer:NO])) {
+#if __has_feature(objc_arc)
 		outputFile = aFile;
 		imageFiles = theFiles;
+#else
+		outputFile = [aFile retain];
+		imageFiles = [theFiles retain];
+#endif
 		imageDelay = dTime;
 		loadingBar = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(10, 50, 480, 24)];
 		activityLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(10, 70, 480, 24)];
