@@ -5,6 +5,7 @@
 //  Created by Alex Nichol on 11/1/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
+//  Converted to Non-ARC 11/4/11
 
 #import "ANGifEncoder.h"
 
@@ -14,8 +15,13 @@
 		globalColorTable:(ANColorTable *)gct {
 	if ((self = [super init])) {
 		if (!handle) return nil;
+#if __has_feature(objc_arc)
 		globalColorTable = gct;
 		fileHandle = handle;
+#else
+		globalColorTable = [gct retain];
+		fileHandle = [handle retain];
+#endif
 		screenWidth = round(aSize.width);
 		screenHeight = round(aSize.height);
 		
@@ -30,6 +36,9 @@
 			screenDesc.gctSize = 7;
 		}
 		[handle writeData:[screenDesc encodeBlock]];
+#if !__has_feature(objc_arc)
+		[screenDesc release];
+#endif
 		
 		if (gct) {
 			// write blank GCT, which will be re-written when the file
@@ -65,7 +74,12 @@
 		colorTable = globalColorTable;
 	}
 	if (!colorTable) {
+#if __has_feature(objc_arc)
 		imageFrame.localColorTable = [[ANAvgColorTable alloc] init];
+#else
+		imageFrame.localColorTable = [[[ANAvgColorTable alloc] init] autorelease];
+#endif
+		colorTable = imageFrame.localColorTable;
 	}
 	
 	// - graphics control extension
@@ -76,6 +90,9 @@
 	gfxControl.transparentColorFlag = [colorTable hasTransparentFirst];
 	gfxControl.transparentColorIndex = [colorTable transparentIndex];
 	[fileHandle writeData:[gfxControl encodeBlock]];
+#if !__has_feature(objc_arc)
+	[gfxControl release];
+#endif
 	
 	// - image descriptor
 	
@@ -84,6 +101,9 @@
 	
 	ANGifImageDescriptor * descriptor = [[ANGifImageDescriptor alloc] initWithImageFrame:imageFrame];
 	[fileHandle writeData:[descriptor encodeBlock]];
+#if !__has_feature(objc_arc)
+	[descriptor release];
+#endif
 	
 	// - local color table
 	if (imageFrame.localColorTable) {
@@ -119,7 +139,20 @@
 - (void)closeFile {
 	[self finishDataStream];
 	[fileHandle closeFile];
+#if !__has_feature(objc_arc)
+	[fileHandle release];
+#endif
 	fileHandle = nil;
 }
+
+#if !__has_feature(objc_arc)
+
+- (void)dealloc {
+	[globalColorTable release];
+	[fileHandle release];
+	[super dealloc];
+}
+
+#endif
 
 @end

@@ -5,6 +5,7 @@
 //  Created by Alex Nichol on 11/1/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
+//  Converted to Non-ARC 11/4/11
 
 #import "ANGifGraphicControlExt.h"
 
