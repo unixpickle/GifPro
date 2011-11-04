@@ -11,7 +11,7 @@ ANGif is a small class library that can be used to encode Graphics Interchange F
 
 The `addImageFrame:` method takes an instance of `ANGifImageFrame`, a basic class for enclosing images. The class itself can be instantiated using the `initWithPixelSource:colorTable:delayTime:` method. As of November 4th, 2011, the best color table to use is `ANCutColorTable`.
 
-The `ANGifImageFramePixelSource` protocol is essential to the use of ANGif. It is suggested that you make a class that wraps a native image class such as `NSBitmapImageRep`, and implements all of the required methods.
+The `ANGifImageFramePixelSource` protocol is essential to the functionality of ANGif. It is suggested that you make a class that wraps a native image class such as `NSBitmapImageRep`, and implements all of the required methods.
 
 The GifPro Project
 ==================
