@@ -16,14 +16,6 @@
 	imageList = [[NSMutableArray alloc] init];
 	[imageTable becomeFirstResponder];
 	[imageTable registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
-	//	NSImage * testImage = [NSImage imageNamed:@"fancy.jpg"];
-//	NSImage * testImage2 = [NSImage imageNamed:@"happy.png"];
-//	ANGifEncoder * encoder = [[ANGifEncoder alloc] initWithOutputFile:@"/Users/alex/Desktop/test.gif"
-//																 size:CGSizeMake(testImage.size.width, testImage.size.height)
-//													 globalColorTable:nil];
-//	[encoder addImageFrame:[self imageFrameFromImage:testImage withDelay:1]];
-//	[encoder addImageFrame:[self imageFrameFromImage:testImage2 withDelay:1]];
-//	[encoder closeFile];
 }
 
 - (IBAction)frameRateTicked:(NSStepper *)sender {
