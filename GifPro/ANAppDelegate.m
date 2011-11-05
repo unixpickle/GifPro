@@ -36,6 +36,10 @@
 }
 
 - (IBAction)exportClicked:(id)sender {
+	if ([imageList count] == 0) {
+		NSRunAlertPanel(@"No Images", @"You must add at least one external image to the animation before exporting.", @"OK", nil, nil);
+		return;
+	}
 	NSSavePanel * savePanel = [NSSavePanel savePanel];
 	[savePanel setAllowedFileTypes:[NSArray arrayWithObject:@"gif"]];
 	[savePanel setMessage:@"Export a gif file"];
