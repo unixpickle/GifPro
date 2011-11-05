@@ -44,7 +44,7 @@
 #if !__has_feature(objc_arc)
 			[colorArray autorelease];
 #endif
-			colorArray = [colorArray colorArrayByAveragingSplit:maxColors];
+			colorArray = [colorArray colorArrayByAveragingSplit:maxGenColors];
 		}
 		for (NSUInteger i = 0; i < [colorArray count]; i++) {
 			[super addColor:[colorArray colorAtIndex:i]];

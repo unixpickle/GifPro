@@ -45,7 +45,7 @@
 			outputFile = [[savePanel URL] path];
 		} else return;
 		
-		[self performSelector:@selector(beginExportToFile:) withObject:outputFile afterDelay:0.2];
+		[self performSelector:@selector(beginExportToFile:) withObject:outputFile afterDelay:0.5];
 	}];
 }
 
