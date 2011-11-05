@@ -14,6 +14,7 @@
 - (id)initWithImage:(NSImage *)anImage {
 	if ((self = [super init])) {
 		bitmapRep = [[NSBitmapImageRep alloc] initWithData:[anImage TIFFRepresentation]];
+		bitmapRep.size = NSMakeSize([bitmapRep pixelsWide], [bitmapRep pixelsHigh]);
 	}
 	return self;
 }

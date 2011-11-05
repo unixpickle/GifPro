@@ -60,7 +60,8 @@
 	@autoreleasepool {
 		NSDate * endMin = [NSDate dateWithTimeIntervalSinceNow:1];
 		NSImage * firstImage = [[NSImage alloc] initWithContentsOfFile:[imageFiles objectAtIndex:0]];
-		CGSize frameSize = NSSizeToCGSize(firstImage.size);
+		ANGifImageFrame * firstFrame = [self imageFrameFromImage:firstImage];
+		CGSize frameSize = CGSizeMake([[firstFrame pixelSource] pixelsWide], [[firstFrame pixelSource] pixelsHigh]);
 		ANGifEncoder * encoder = [[ANGifEncoder alloc] initWithOutputFile:outputFile
 																	 size:frameSize globalColorTable:nil];
 #if __has_feature(objc_arc)
@@ -69,7 +70,7 @@
 		[encoder addApplicationExtension:[[[ANGifNetscapeAppExtension alloc] initWithRepeatCount:0xffff] autorelease]]; // loop
 #endif
 		
-		[encoder addImageFrame:[self imageFrameFromImage:firstImage]];
+		[encoder addImageFrame:firstFrame];
 		
 #if __has_feature(objc_arc) != 1
 		[firstImage release];
@@ -124,7 +125,9 @@
 		return [self imageFrameFromImage:image];
 	}
 	
-	CGSize imageSize = NSSizeToCGSize(image.size);
+	NSImageRep * imageRep = [[image representations] objectAtIndex:0];
+	
+	CGSize imageSize = CGSizeMake([imageRep pixelsWide], [imageRep pixelsHigh]);
 	NSImage * scaledImage = image;
 	NSUInteger offsetX = 0, offsetY = 0;
 	
