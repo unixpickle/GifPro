@@ -108,12 +108,17 @@
 - (ANGifImageFrame *)imageFrameFromImage:(NSImage *)image {
 #if __has_feature(objc_arc)
 	ANNSImageGifPixelSource * pixSource = [[ANNSImageGifPixelSource alloc] initWithImage:image];
+	ANColorTable * colorTable = [[ANCutColorTable alloc] initWithTransparentFirst:YES
+																	  pixelSource:pixSource
+																		  samples:kExportSampleCount];
 	return [[ANGifImageFrame alloc] initWithPixelSource:pixSource
-											 colorTable:[[ANCutColorTable alloc] initWithTransparentFirst:YES pixelSource:pixSource]
+											 colorTable:colorTable
 											  delayTime:imageDelay];
 #else
 	ANNSImageGifPixelSource * pixSource = [[[ANNSImageGifPixelSource alloc] initWithImage:image] autorelease];
-	ANColorTable * colorTable = [[[ANCutColorTable alloc] initWithTransparentFirst:YES pixelSource:pixSource] autorelease];
+	ANColorTable * colorTable = [[[ANCutColorTable alloc] initWithTransparentFirst:YES
+																	   pixelSource:pixSource
+																		   samples:kExportSampleCount] autorelease];
 	return [[[ANGifImageFrame alloc] initWithPixelSource:pixSource
 											 colorTable:colorTable
 											  delayTime:imageDelay] autorelease];

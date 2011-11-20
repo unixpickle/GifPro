@@ -29,6 +29,7 @@
 		FA0C09D7146388170074409F /* ANGifImageDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0C09C6146388170074409F /* ANGifImageDescriptor.m */; };
 		FA0C09D8146388170074409F /* ANGifImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0C09C8146388170074409F /* ANGifImageFrame.m */; };
 		FA0C09D9146388170074409F /* LZWSpoof.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0C09CC146388170074409F /* LZWSpoof.m */; };
+		FA3E7C7D1479A30A00EE7144 /* LZWBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3E7C7C1479A30A00EE7144 /* LZWBuffer.m */; };
 		FA9B338E1464812700D58B3A /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B338D1464812700D58B3A /* NSImage+Resize.m */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,8 @@
 		FA0C09C9146388170074409F /* ANGifImageFramePixelSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANGifImageFramePixelSource.h; sourceTree = "<group>"; };
 		FA0C09CB146388170074409F /* LZWSpoof.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZWSpoof.h; sourceTree = "<group>"; };
 		FA0C09CC146388170074409F /* LZWSpoof.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZWSpoof.m; sourceTree = "<group>"; };
+		FA3E7C7C1479A30A00EE7144 /* LZWBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZWBuffer.m; sourceTree = "<group>"; };
+		FA3E7C7F1479A31400EE7144 /* LZWBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZWBuffer.h; sourceTree = "<group>"; };
 		FA9B338C1464812700D58B3A /* NSImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
 		FA9B338D1464812700D58B3A /* NSImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Resize.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -230,6 +233,8 @@
 			children = (
 				FA0C09CB146388170074409F /* LZWSpoof.h */,
 				FA0C09CC146388170074409F /* LZWSpoof.m */,
+				FA3E7C7F1479A31400EE7144 /* LZWBuffer.h */,
+				FA3E7C7C1479A30A00EE7144 /* LZWBuffer.m */,
 			);
 			path = LZW;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				FA0C09D8146388170074409F /* ANGifImageFrame.m in Sources */,
 				FA0C09D9146388170074409F /* LZWSpoof.m in Sources */,
 				FA9B338E1464812700D58B3A /* NSImage+Resize.m in Sources */,
+				FA3E7C7D1479A30A00EE7144 /* LZWBuffer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

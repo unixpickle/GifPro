@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#include "LZWBuffer.h"
 
 #define BitOutOfRangeException @"BitOutOfRangeException"
 
@@ -14,22 +15,16 @@ void LZWDataAddBit (UInt8 ** _bytePool, NSUInteger * _totalSize, NSUInteger * nu
 BOOL LZWDataGetBit (UInt8 * _bytePool, NSUInteger bitIndex);
 
 @interface LZWSpoof : NSObject {
-	UInt8 * _bytePool;
-	NSUInteger _totalSize;
-	NSUInteger numBits;
+	LZWBufferRef buffer;
 }
 
-@property (readonly) NSUInteger numBits;
+@property (readonly) LZWBufferRef buffer;
 
 + (NSData *)lzwExpandData:(NSData *)existingData;
 
 - (id)initWithData:(NSData *)initialData;
-- (void)addBit:(BOOL)flag;
-- (BOOL)getBitAtIndex:(NSUInteger)bitIndex;
+- (NSData *)convertToData;
 
 - (void)addLZWClearCode;
-- (void)addByte:(NSUInteger)startBit fromBuffer:(LZWSpoof *)source;
-
-- (NSData *)convertToData;
 
 @end

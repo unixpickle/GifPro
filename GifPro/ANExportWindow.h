@@ -13,6 +13,8 @@
 #import "ANGifNetscapeAppExtension.h"
 #import "NSImage+Resize.h"
 
+#define kExportSampleCount 2056
+
 @interface ANExportWindow : NSWindow {
 	NSProgressIndicator * loadingBar;
 	NSButton * cancelButton;

@@ -12,10 +12,14 @@
 @implementation ANCutColorTable
 
 - (id)initWithTransparentFirst:(BOOL)hasAlpha pixelSource:(id<ANGifImageFramePixelSource>)pixelSource {
+	return (self = [self initWithTransparentFirst:hasAlpha pixelSource:pixelSource samples:kColorTableSamplePoints]);
+}
+
+- (id)initWithTransparentFirst:(BOOL)hasAlpha pixelSource:(id<ANGifImageFramePixelSource>)pixelSource samples:(NSUInteger)count {
 	if ((self = [super initWithTransparentFirst:hasAlpha])) {
 		ANMutableColorArray * colorArray = [[ANMutableColorArray alloc] init];
 		NSUInteger color[4];
-		NSUInteger numberOfPoints = 512;
+		NSUInteger numberOfPoints = count;
 		NSUInteger totalPixels = [pixelSource pixelsWide] * [pixelSource pixelsHigh];
 		double pixelsPerSample = (double)totalPixels / (double)numberOfPoints;
 		if (pixelsPerSample < 1) pixelsPerSample = 1;
